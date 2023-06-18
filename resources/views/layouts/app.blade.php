@@ -23,7 +23,7 @@
     <div id="app">
 
         {{-- подключили компонент --}}
-        <post-component></post-component>
+        <posts-component></posts-component>
 
 
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
