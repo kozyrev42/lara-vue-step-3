@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Person;
 
-class PostController extends Controller
+class PersonController extends Controller
 {
     public function getUsers()
     {
@@ -32,5 +33,30 @@ class PostController extends Controller
     public function testApi()
     {
         return 'тест АПИ ';
+    }
+
+    public function createPerson(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'job' => 'required',
+            'age' => 'required|integer',
+        ]);
+
+        $name = $request->name;
+        $job = $request->job;
+        $age = $request->age;
+
+        $person = new Person();
+        $person->name = $name;
+        $person->job = $job;
+        $person->age = $age;
+        $person->save();
+
+        return response()->json([
+            'name' => $name,
+            'job' => $job,
+            'age' => $age,
+        ]);
     }
 }

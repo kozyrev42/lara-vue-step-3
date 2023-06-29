@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\PersonController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // роуты нужно вызывать с префиксом /api/url_роута
 
-Route::get('/test', [PostController::class, 'testApi']);
+Route::get('/test', [PersonController::class, 'testApi']);
+
+Route::get('/users', [PersonController::class, 'getUsers']);
+
+Route::post('/person/create', [PersonController::class, 'createPerson']);
