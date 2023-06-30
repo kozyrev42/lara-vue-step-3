@@ -43,20 +43,12 @@ class PersonController extends Controller
             'age' => 'required|integer',
         ]);
 
-        $name = $request->name;
-        $job = $request->job;
-        $age = $request->age;
+        $data = $request->all();
 
-        $person = new Person();
-        $person->name = $name;
-        $person->job = $job;
-        $person->age = $age;
-        $person->save();
+        $person = Person::create($data);
 
         return response()->json([
-            'name' => $name,
-            'job' => $job,
-            'age' => $age,
+            'person' => $person,
         ]);
     }
 }
