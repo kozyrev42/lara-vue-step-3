@@ -26,3 +26,9 @@ Route::get('/test', [PersonController::class, 'testApi']);
 Route::get('/users', [PersonController::class, 'getUsers']);
 
 Route::post('/person/create', [PersonController::class, 'createPerson']);
+
+Route::get('/person/get', [PersonController::class, 'getPeople']);
+
+Route::patch('/person/update', [PersonController::class, 'updatePerson']);
+
+Route::delete('/person/delete/{id}', [PersonController::class, 'deletePerson']);

@@ -51,4 +51,40 @@ class PersonController extends Controller
             'person' => $person,
         ]);
     }
+
+    public function getPeople()
+    {
+        $data = Person::all();
+
+        return response()->json($data);
+    }
+
+    public function updatePerson(Request $request)
+    {
+        $request->validate([
+            'id' => 'required|integer',
+            'name' => 'required',
+            'job' => 'required',
+            'age' => 'required|integer',
+        ]);
+
+        $data = $request->all();
+
+        $person = Person::find($data['id']);
+
+        $person->update($data);
+
+        return response()->json($data);
+    }
+
+    public function deletePerson($id)
+    {
+        $person = Person::find($id);
+
+        $person->delete();
+
+        return response()->json([
+            'message' => 'Пользователь удален',
+        ]);
+    }
 }
