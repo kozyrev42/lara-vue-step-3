@@ -29,6 +29,8 @@ Route::post('/person/create', [PersonController::class, 'createPerson']);
 
 Route::get('/person/get', [PersonController::class, 'getPeople']);
 
+Route::get('/person/get/{id}', [PersonController::class, 'getPersonById']);
+
 Route::patch('/person/update', [PersonController::class, 'updatePerson']);
 
 Route::delete('/person/delete/{id}', [PersonController::class, 'deletePerson']);

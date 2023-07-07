@@ -48,7 +48,7 @@ class PersonController extends Controller
         $person = Person::create($data);
 
         return response()->json([
-            'person' => $person,
+            'data' => $person,
         ]);
     }
 
@@ -57,6 +57,13 @@ class PersonController extends Controller
         $data = Person::all();
 
         return response()->json($data);
+    }
+
+    public function getPersonById($id)
+    {
+        $person = Person::find($id);
+
+        return response()->json($person);
     }
 
     public function updatePerson(Request $request)
